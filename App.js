@@ -20,8 +20,22 @@ export default function App() {
         />
       </View>
 
-      <View>
+      <View style={styles.buttonArea}>
+          <TouchableOpacity style={[styles.btn, {backgroundColor: '#1d75cd'}]}>
+            <Text style={styles.textBtn}>Buscar</Text>
+          </TouchableOpacity>
 
+          <TouchableOpacity style={[styles.btn, {backgroundColor: '#cd3e1d'}]}>
+            <Text style={styles.textBtn}>Buscar</Text>
+          </TouchableOpacity>
+      </View>
+
+      <View style={styles.resultado}>
+        <Text style={styles.textResultado}>CEP: 45980000</Text>
+        <Text style={styles.textResultado}>Logradouro: 45980000</Text>
+        <Text style={styles.textResultado}>Bairro: Centro</Text>
+        <Text style={styles.textResultado}>Cidade: Sao Paulo</Text>
+        <Text style={styles.textResultado}>Estado: SP</Text>
       </View>
     </SafeAreaView>
   );
@@ -50,5 +64,32 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     width: '90%',
     elevation: 1
+  },
+  buttonArea:{
+    flexDirection: 'row',
+    marginTop: 25,
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  btn:{
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
+    paddingLeft: 20,
+    paddingRight: 20,
+    borderRadius: 5
+  },
+  textBtn:{
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  resultado:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textResultado:{
+    fontSize: 22
   }
 });
