@@ -11,12 +11,17 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.view}>
-        <Text>Digite o cep desejado</Text>
+        <Text style={styles.textCep}>Digite o cep desejado</Text>
         <TextInput
           style={styles.input} placeholder='Ex: 45980000'
           value={cep}
           onChangeText={(text) => setCep(text)}
+          keyboardType='numeric'
         />
+      </View>
+
+      <View>
+
       </View>
     </SafeAreaView>
   );
@@ -30,7 +35,20 @@ const styles = StyleSheet.create({
   view:{
     alignItems: 'center'
   },
+  textCep:{
+    marginTop: 10,
+    marginBottom: 15,
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
   input:{
-
+    fontSize: 18,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#ddd',
+    width: '90%',
+    elevation: 1
   }
 });
