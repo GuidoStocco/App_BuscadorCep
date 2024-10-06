@@ -27,6 +27,14 @@ export default function App(){
                     <Text style={styles.textBtn}>Limpar</Text>
                 </TouchableOpacity> 
             </View>
+
+            <View style={styles.resultado}>
+                <Text style={styles.textResultado}>CEP: 45980000</Text>
+                <Text style={styles.textResultado}>LOGRADOURO: 45980000</Text>
+                <Text style={styles.textResultado}>BAIRRO: CENTRO</Text>
+                <Text style={styles.textResultado}>CIDADE: SAO PAULO</Text>
+                <Text style={styles.textResultado}>ESTADO: SP</Text>
+            </View>
         </SafeAreaView>
     );
 };
@@ -34,7 +42,7 @@ export default function App(){
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1
+        flex: 1,
     },
     view:{
         marginTop: 40,
@@ -42,7 +50,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     viewText:{
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: 'bold', 
         marginBottom: 18
     },
@@ -54,13 +62,16 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         elevation: 1,
-        marginBottom: 30
+        
     },
     areaBtn:{
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        marginTop: 20
     },
     btn:{
+        height: 50,
         padding: 10,
         borderRadius: 5,
         paddingLeft: 20,
@@ -69,5 +80,14 @@ const styles = StyleSheet.create({
     textBtn:{
         color: '#fff',
         fontSize: 18
+    },
+    resultado:{
+        marginTop: 80,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textResultado:{
+        fontSize: 22,
+        fontWeight: '500'
     }
 })
