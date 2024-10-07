@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 import Api from './src/services/Api'
@@ -6,10 +6,13 @@ import Api from './src/services/Api'
 export default function App(){
 
     const [cep, setCep] = useState('')
+    const inputRef = useRef(null);
 
     function limpar(){
         setCep('')
+        inputRef.current.focus();
     }
+
 
     return(
         <SafeAreaView style={StyleSheet.container}>
