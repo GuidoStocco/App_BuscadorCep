@@ -7,6 +7,10 @@ export default function App(){
 
     const [cep, setCep] = useState('')
 
+    function limpar(){
+        setCep('')
+    }
+
     return(
         <SafeAreaView style={StyleSheet.container}>
             <View style={styles.view}>
@@ -23,7 +27,8 @@ export default function App(){
                     <Text style={styles.textBtn}>Buscar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.btn, {backgroundColor: '#0099ff'}]}>
+                <TouchableOpacity style={[styles.btn, {backgroundColor: '#0099ff'}]} 
+                    onPress={limpar}>
                     <Text style={styles.textBtn}>Limpar</Text>
                 </TouchableOpacity> 
             </View>
