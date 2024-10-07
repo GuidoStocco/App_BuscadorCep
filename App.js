@@ -8,6 +8,23 @@ export default function App(){
     const [cep, setCep] = useState('')
     const inputRef = useRef(null);
 
+    async function buscar(){
+        if(cep == ''){
+            alert('Digite um Cep Válido!');
+            setCep('');
+            return;
+        };
+
+        try {
+            const response = await Api.get(`/${cep}/json`)
+            console.log(response.data)
+            
+        } catch (error) {
+            alert('ERROR: ' + error)
+        }
+
+    }
+
     function limpar(){
         setCep('')
         inputRef.current.focus();
@@ -26,7 +43,8 @@ export default function App(){
             </View>
 
             <View style={styles.areaBtn}>
-                <TouchableOpacity style={[styles.btn, {backgroundColor: '#ff1a1a'}]}>
+                <TouchableOpacity style={[styles.btn, {backgroundColor: '#ff1a1a'}]}
+                    onPress={buscar}>
                     <Text style={styles.textBtn}>Buscar</Text>
                 </TouchableOpacity>
 
