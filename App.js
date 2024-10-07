@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, Keyboard} from 'react-native';
 
 import Api from './src/services/Api'
 
@@ -7,6 +7,7 @@ export default function App(){
 
     const [cep, setCep] = useState('')
     const inputRef = useRef(null);
+    const [cepUser, setCepUser] = useState(null);
 
     async function buscar(){
         if(cep == ''){
@@ -17,8 +18,9 @@ export default function App(){
 
         try {
             const response = await Api.get(`/${cep}/json`)
-            console.log(response.data)
-            
+            // console.log(response.data)
+            setCepUser(response.data)
+            Keyboard.dismiss();
         } catch (error) {
             alert('ERROR: ' + error)
         }
@@ -27,7 +29,8 @@ export default function App(){
 
     function limpar(){
         setCep('')
-        inputRef.current.focus();
+        // inputRef.current.focus(); TA DANDO ERROR (PROPRIEDADE NULL)
+        setCepUser(null)
     }
 
 
@@ -54,13 +57,15 @@ export default function App(){
                 </TouchableOpacity> 
             </View>
 
-            <View style={styles.resultado}>
-                <Text style={styles.textResultado}>CEP: 45980000</Text>
-                <Text style={styles.textResultado}>LOGRADOURO: 45980000</Text>
-                <Text style={styles.textResultado}>BAIRRO: CENTRO</Text>
-                <Text style={styles.textResultado}>CIDADE: SAO PAULO</Text>
-                <Text style={styles.textResultado}>ESTADO: SP</Text>
-            </View>
+            {cepUser && 
+                <View style={styles.resultado}>
+                    <Text style={styles.textResultado}>CEP: {cepUser.cep}</Text>
+                    <Text style={styles.textResultado}>LOGRADOURO: {cepUser.logradouro}</Text>
+                    <Text style={styles.textResultado}>BAIRRO: {cepUser.bairro}</Text>
+                    <Text style={styles.textResultado}>CIDADE: {cepUser.localidade}</Text>
+                    <Text style={styles.textResultado}>ESTADO: {cepUser.uf}</Text>
+                </View>}
+
         </SafeAreaView>
     );
 };
